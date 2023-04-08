@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodMeets</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -36,10 +37,20 @@
             <!-- Row -->
             <div class="w-full xl:w-3/4 lg:w-11/12 flex">
                 <!-- Col -->
+
                 <div class="w-full optionsWrapper">
                     <h3 class="text-center homeTitle">Welcome - Let's plan some meals!</h3>
                     <form class="menuWrapper">
                       <a href="/inputWeekPlanMeals" class="weeklyMenu component">
+                <div
+                    class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+                    style="background-image: url('/images/food.png')"
+                ></div>
+                <!-- Col -->
+                <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+                    <h3 class="pt-4 text-2xl text-center">Welcome - Let's plan some meals!</h3>
+                    <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+                      <a href="/inputWeekPlanMeals">
                         <button
                           class="textBackground"
                           type="button"> Create your weekly menu
@@ -51,12 +62,20 @@
                           type="button">What's in your fridge?
                     </button>
                       </a>
-                      <a href="file:///C:/Users/tulsa/OneDrive/Documents/GitHub/Bon-Hack-tit/views/inputIngredient.html" class="somethingNew component">
+                      <a href="/inputRandom" class="somethingNew component">
                         <button
                           class="textBackground"
                           type="button">Try something new today
                       </button>
                       </a>
+                    <br> <br>
+                    <a href="/inputRandom">
+                                    <button
+                                        class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                                        type="button">Try something new today
+                                    </button>
+                    </a>
+                    <br> <br>
                                     
 
                         </div>

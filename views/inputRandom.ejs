@@ -55,17 +55,17 @@
     </nav>
 
     <br />
-    <form class="max-w-sm mx-auto" , method="post" , action="/ingredientList">
+    <form class="max-w-sm mx-auto" , method="post" , action="/randomList">
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="include">
-          Ingredients
+          Tags
         </label>
         <textarea
           class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="message"
           rows="4"
-          placeholder="Enter the ingredient(s) that you have in your fridge.&#10;&#10;Eg- apples,flour,sugar"
-          name="ingredients"
+          placeholder="Enter the tags (can be diets, meal types, cuisines, or intolerances) that the recipe must have.&#10;&#10;Eg- vegetarian, dessert"
+          name="tags"
           required
         ></textarea>
       </div>
@@ -76,7 +76,7 @@
         <input
           class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="number"
-          placeholder="Enter the maximum number of recipes to return (between 1 and 100)."
+          placeholder="Enter the number of random recipes to be returned (between 1 and 100)."
           name="number"
           required
         />
