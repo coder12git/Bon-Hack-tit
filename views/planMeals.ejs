@@ -221,19 +221,19 @@
       referrerpolicy="no-referrer"
     ></script>
     
-	<script>
-		window.onload = function () {
-		  const btn = document.getElementById("downloadBtn");
-		  btn.addEventListener("click", () => {
-			const menu = this.document.getElementById("result");
-			const options = {
-			  filename: "menu.pdf",
-			  image: { type: "jpeg", quality: 0.98 },
-			  jsPDF: { format: "letter", orientation: "landscape" },
-			};
-			html2pdf().from(menu).set(options).save();
-		  });
-		};
-	  </script>
+    <script>
+      window.onload = function () {
+        const btn = document.getElementById("downloadBtn");
+        btn.addEventListener("click", () => {
+          const menu = this.document.getElementById("result");
+          const options = {
+            filename: "menu.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            jsPDF: { format: "letter", orientation: "landscape" },
+          };
+          html2pdf().from(menu).set(options).save();
+        });
+      };
+    </script>
 </body>
 </html>

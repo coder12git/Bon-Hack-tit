@@ -13,7 +13,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const apiKey = "c7d40af634094a53a02a542268b9f073";
+const apiKey = "f8f19f5552fe4a64a5bd79038933bb05";
 
 // All the get request to render differrent page.
 
