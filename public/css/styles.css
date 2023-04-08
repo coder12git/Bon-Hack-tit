@@ -4,7 +4,7 @@ body * {
 }
 .homeBody {
     min-height: 100svh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1573405618462-1a85b3ac7bac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://static.vecteezy.com/system/resources/previews/003/823/542/original/spices-for-use-as-cooking-ingredients-on-a-wooden-background-with-fresh-vegetables-healthy-food-herbs-organic-vegetables-on-the-table-raw-materials-of-cooking-preparation-tom-yum-free-photo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center 30%;
@@ -45,20 +45,20 @@ h3.homeTitle {
     transition: .2s;
     transform: scale(1.5);
     border-radius: 15px;
-    .textBackground {
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-    }
+}
+.component:hover .textBackground {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 .weeklyMenu {
-    background-image: url("https://images.unsplash.com/photo-1536236397240-9b229a37a286?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-image: url("https://freedesignfile.com/upload/2017/05/Restaurant-menu-with-black-background-vector.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     animation: weeklyMenuAnimation 1.2s;
 }
 .inFridge {
-    background-image: url("https://images.unsplash.com/photo-1643494847705-74808059bf07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=415&q=80");
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI9F3QferHQjUXTo53v2JRvG2YPp78J3HgKA&usqp=CAU");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
