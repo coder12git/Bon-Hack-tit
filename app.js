@@ -98,18 +98,25 @@ app.post("/ingredientList", async (req, res) => {
     const recipesData = await generateRecipesByIngredients.json();
 
     // Generate recipe information
-
-    const recipeInfo = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=c7d40af634094a53a02a542268b9f073`
-    );
-    const results = recipeInfo.json();
-
-    res.render("planMealsByIngredients", {
-      recipes: recipesData,
-      results: results,
+    const recipeInfoPromises = recipesData.map(async (recipe) => {
+      const recipeInfo = await fetch(
+        `https://api.spoonacular.com/recipes/${recipe.id}/nutritionWidget.json?apiKey=${apiKey}`
+      );
+      const infoData = await recipeInfo.json();
+      return {
+        ...recipe,
+        nutrients: infoData,
+      };
     });
 
-    // res.send(recipesData);
+    // Wait for all recipe nutrient information to be fetched
+    const recipesWithNutrients = await Promise.all(recipeInfoPromises);
+
+    res.render("planMealsByIngredients", {
+      recipes: recipesWithNutrients,
+    });
+
+    // res.send(recipesWithNutrients);
   } catch (error) {
     res.send(error);
     console.log(error);
