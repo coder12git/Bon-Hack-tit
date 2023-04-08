@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 const apiKey = "f8f19f5552fe4a64a5bd79038933bb05";
 
-// All the get request to render differrent page.
+// All the get request to render different page.
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -122,7 +122,7 @@ app.post("/ingredientList", async (req, res) => {
 
     // res.send(recipesWithNutrients);
   } catch (error) {
-    res.send(error);
+    res.send("Sorry! Some error occurred. Please try again!");
     console.log(error);
   }
 });
@@ -166,7 +166,7 @@ app.post("/randomList", async (req, res) => {
       recipes: recipesWithNutrients,
     });
   } catch (error) {
-    res.send(error);
+    res.send("Sorry! Some error occurred. Please try again!");
     console.log(error);
   }
 });
