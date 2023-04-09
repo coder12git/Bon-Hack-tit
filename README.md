@@ -18,6 +18,8 @@ Plan your meals with ease, from weekly menus to random recipes and ingredient-ba
 **Project Demo** - [FoodMeets](https://youtu.be/dWX_AudCbIM)
 
 
+**Try out** - [FoodMeets](https://bon-hack-tit.suruchikumari1.repl.co/)
+
 ![f1](https://user-images.githubusercontent.com/108334168/230757880-564c8d64-aa84-4c5b-8046-b53bf349f913.png)
 
 
