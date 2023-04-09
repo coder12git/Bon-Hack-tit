@@ -15,7 +15,8 @@
 Plan your meals with ease, from weekly menus to random recipes and ingredient-based suggestions.
 
 
-iMage
+![f1](https://user-images.githubusercontent.com/108334168/230757880-564c8d64-aa84-4c5b-8046-b53bf349f913.png)
+
 
 
 ## How to Setup
@@ -43,9 +44,14 @@ npm start
 
 ## Sample menu and recipe
 
-Image
 
-Image
+![f7](https://user-images.githubusercontent.com/108334168/230757925-023827de-be98-484f-8a3a-eb398b7e2d79.png)
+
+
+![f4](https://user-images.githubusercontent.com/108334168/230757957-7db957ee-cf95-4ef2-9bf0-7548071e7c93.png)
+
+
+![f5](https://user-images.githubusercontent.com/108334168/230757982-38980b08-a564-4599-aa37-0dedec2d7c5c.png)
 
 
 ## What it does
