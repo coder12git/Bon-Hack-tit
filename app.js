@@ -9,6 +9,8 @@ const weekMenusRoutes = require("./routes/weekMenusRoutes");
 const fridgeRoutes = require("./routes/fridgeRoutes");
 const tagRoutes = require("./routes/tagRoutes");
 const recipeRoutes = require("./routes/recipeRoutes");
+const dbRoutes = require("./routes/db");
+const { db } = require("./models/recipes/recipeModel");
 
 const app = express();
 
@@ -26,5 +28,6 @@ app.post("/mealList", weekMenusRoutes);
 app.post("/ingredientList", fridgeRoutes);
 app.post("/randomList", tagRoutes);
 app.get("/recipe/:mealId", recipeRoutes);
+app.post("/savedRecipe", dbRoutes);
 
 module.exports = app;

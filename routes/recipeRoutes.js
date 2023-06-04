@@ -36,6 +36,7 @@ router.get("/recipe/:mealId", async (req, res) => {
     summary: striptags(summary.summary),
     analyzedInstructions: info.analyzedInstructions,
     ingredients: ingredientsData.ingredients,
+    id: mealId,
   });
   // res.send(summary.summary);
 });
