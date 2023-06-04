@@ -132,6 +132,13 @@
         Download as PDF
       </button>
 
+      <form method="post", action="/savedRecipe">
+        <input type="hidden" value="<%= title %>" name="name">
+        <input type="hidden" value="<%= image %>" name="image">
+        <input type="hidden" value="<%= readyInMinutes %>" name="time">
+        <input type="hidden" value="" name="id">
+      </form>
+
       <div class="container" id="meals">
         <div class="left-side">
           <img src="<%= image %>" alt="Recipe Image" class="profile-image" />

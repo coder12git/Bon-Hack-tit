@@ -1,10 +1,14 @@
 const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
+const mongoose = require("mongoose");
+
+
+dotenv.config({ path: "./.env" });
+mongoose.connect(process.env.DB_URI);
 
 const app = require("./app");
 
 const port = process.env.port || 8000;
 
-app.main.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });

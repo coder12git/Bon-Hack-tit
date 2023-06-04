@@ -1,28 +1,23 @@
 {
-  "name": "bon-hack-tit",
+  "name": "food-meets",
   "version": "1.0.0",
   "description": "Meal Planning Web App",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/coder12git/Bon-Hack-tit.git"
+    "start": "nodemon server.js"
   },
   "author": "Suruchi Kumari",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/coder12git/Bon-Hack-tit/issues"
-  },
-  "homepage": "https://github.com/coder12git/Bon-Hack-tit#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
-    "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "mongoose": "^7.2.2",
     "node-fetch": "^3.3.1",
     "striptags": "^3.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

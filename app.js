@@ -1,210 +1,30 @@
-// const dotenv = require("dotenv");
-// dotenv.config({ path: "./config.env" });
+// Imports from libraries
 const express = require("express");
 const bodyParser = require("body-parser");
-const striptags = require("striptags");
-const cheerio = require("cheerio");
-
 const ejs = require("ejs");
+
+// Imports from projects
+const viewsRoutes = require("./routes/viewsRoutes");
+const weekMenusRoutes = require("./routes/weekMenusRoutes");
+const fridgeRoutes = require("./routes/fridgeRoutes");
+const tagRoutes = require("./routes/tagRoutes");
+const recipeRoutes = require("./routes/recipeRoutes");
 
 const app = express();
 
-app.set("view engine", "ejs");
+// Req body modifiers
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Views middleware
+app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-const apiKey = "54fe1ed340324dde9577a8ba35e809fc";
+// -----------------------------------
+// ROUTERS
+app.use("/", viewsRoutes);
+app.post("/mealList", weekMenusRoutes);
+app.post("/ingredientList", fridgeRoutes);
+app.post("/randomList", tagRoutes);
+app.get("/recipe/:mealId", recipeRoutes);
 
-// All the get request to render different page.
-
-app.get("/", (req, res) => {
-  res.render("home");
-});
-
-app.get("/inputWeekPlanMeals", (req, res) => {
-  res.render("inputWeekPlanMeals");
-});
-
-app.get("/inputIngredient", (req, res) => {
-  res.render("inputIngredient");
-});
-
-app.get("/inputRandom", (req, res) => {
-  res.render("inputRandom");
-});
-
-// POST request to render menus for a week based on user input
-
-app.post("/mealList", async (req, res) => {
-  // Variables for meal planning based on user input
-  const targetCalories = req.body.targetCalories;
-  let diets = req.body.diets;
-  if (typeof diets === "string") {
-    diets = req.body.diets.split(",");
-  }
-  let cuisines = req.body.cusines;
-  if (typeof cuisines === "string") {
-    cuisines = req.body.cuisines.split(",");
-  }
-  let excludeIngredients = req.body.excludeIngredients;
-  if (typeof excludeIngredients === "string") {
-    excludeIngredients = req.body.excludeIngredients.split(",");
-  }
-  let includeIngredients = req.body.includeIngredients;
-  if (typeof includeIngredients === "string") {
-    includeIngredients = req.body.includeIngredients.split(",");
-  }
-  let preferences = req.body.preferences;
-  if (typeof preferences === "string") {
-    preferences = req.body.preferences.split(",");
-  }
-
-  try {
-    const { default: fetch } = await import("node-fetch");
-
-    // Week meal plan using user input
-    const weekPlan = await fetch(
-      `https://api.spoonacular.com/mealplanner/generate?apiKey=${apiKey}&timeFrame=week&targetCalories=${targetCalories}&diet=${diets}&excludeIngredients=${excludeIngredients}&includeIngredients=${includeIngredients}&cuisine=${cuisines}&preferences=${preferences}`
-    );
-
-    const dataOfMeal = await weekPlan.json();
-    const days = await dataOfMeal.week;
-
-    res.render("planMeals", { meals: days });
-  } catch (error) {
-    res.send("Sorry! Some error occurred. Please try again!");
-    console.log(error);
-  }
-});
-
-//POST request to generate recipe based on ingredients provided by user
-
-app.post("/ingredientList", async (req, res) => {
-  // Storing the input provided by user in a variable in backend
-
-  let ingredients = req.body.ingredients;
-  if (typeof ingredients === "string") {
-    ingredients = req.body.ingredients.split(",");
-  }
-
-  let number = req.body.number;
-  if (typeof number === "string") {
-    number = req.body.number.split(",");
-  }
-
-  try {
-    const { default: fetch } = await import("node-fetch");
-
-    //Generate recipes by ingredients
-    const generateRecipesByIngredients = await fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=${number}&apiKey=${apiKey}`
-    );
-    const recipesData = await generateRecipesByIngredients.json();
-
-    // Generate recipe information
-    const recipeInfoPromises = recipesData.map(async (recipe) => {
-      const recipeInfo = await fetch(
-        `https://api.spoonacular.com/recipes/${recipe.id}/nutritionWidget.json?apiKey=${apiKey}`
-      );
-      const infoData = await recipeInfo.json();
-      return {
-        ...recipe,
-        nutrients: infoData,
-      };
-    });
-
-    // Wait for all recipe nutrient information to be fetched
-    const recipesWithNutrients = await Promise.all(recipeInfoPromises);
-
-    res.render("planMealsByIngredients", {
-      recipes: recipesWithNutrients,
-    });
-
-    // res.send(recipesWithNutrients);
-  } catch (error) {
-    res.send("Sorry! Some error occurred. Please try again!");
-    console.log(error);
-  }
-});
-
-//POST request to generate random list of recipes based on tags provided by user
-
-app.post("/randomList", async (req, res) => {
-  // Tags and number provided by user
-
-  const number = req.body.number;
-  let tags = req.body.tags;
-  if (typeof tags === "strings") {
-    tags = req.body.tags.split(",");
-  }
-
-  try {
-    const { default: fetch } = await import("node-fetch");
-    const generateRandomRecipes =
-      await fetch(`https://api.spoonacular.com/recipes/random?number=${number}&tags=${tags}&apiKey=${apiKey}
-    `);
-
-    const randomData = await generateRandomRecipes.json();
-
-    // Generate Recipe information including nutrients
-
-    const recipeInfoPromises = randomData.recipes.map(async (recipe) => {
-      const recipeInfo = await fetch(
-        `https://api.spoonacular.com/recipes/${recipe.id}/nutritionWidget.json?apiKey=${apiKey}`
-      );
-      const infoData = await recipeInfo.json();
-      return {
-        ...recipe,
-        nutrients: infoData,
-      };
-    });
-
-    // Wait for all recipe nutrient information to be fetched
-    const recipesWithNutrients = await Promise.all(recipeInfoPromises);
-
-    res.render("randomMeals", {
-      recipes: recipesWithNutrients,
-    });
-  } catch (error) {
-    res.send("Sorry! Some error occurred. Please try again!");
-    console.log(error);
-  }
-});
-
-app.get("/recipe/:mealId", async (req, res) => {
-  const mealId = req.params.mealId;
-
-  const { default: fetch } = await import("node-fetch");
-
-  //Recipe info based on meal id
-  const recipeInfo =
-    await fetch(`https://api.spoonacular.com/recipes/${mealId}/information?apiKey=${apiKey}&includeNutrition=true
-  `);
-  const info = await recipeInfo.json();
-
-  // Summary of the recipe based on meal id
-
-  const summaryInfo = await fetch(
-    `https://api.spoonacular.com/recipes/${mealId}/summary?apiKey=${apiKey}`
-  );
-  const summary = await summaryInfo.json();
-
-  //Ingredient info based on meal id
-  const ingredientsInfo =
-    await fetch(`https://api.spoonacular.com/recipes/${mealId}/ingredientWidget.json?apiKey=${apiKey}
-  `);
-  const ingredientsData = await ingredientsInfo.json();
-
-  res.render("recipe", {
-    title: info.title,
-    readyInMinutes: info.readyInMinutes,
-    image: info.image,
-    nutrition: info.nutrition,
-    summary: striptags(summary.summary),
-    analyzedInstructions: info.analyzedInstructions,
-    ingredients: ingredientsData.ingredients,
-  });
-  // res.send(summary.summary);
-});
-
-module.exports.main = app;
+module.exports = app;
