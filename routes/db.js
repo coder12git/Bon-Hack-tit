@@ -11,8 +11,7 @@ router.post("/savedRecipe", (req, res) => {
       time: req.body.time,
     });
     recipe.save();
-    res.send("Recipe saved successfully!");
-    
+    res.send('<h1 style="text-align: center;">Recipe Saved Successfully!</h1>');
   } catch (error) {
     res.send(error);
   }
