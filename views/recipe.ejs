@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodMeets</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,19 +83,44 @@
     <link href="/css/styles.css" rel="stylesheet" />
   </head>
   <body class="font-mono bg-gray-400">
-    <nav x-data="{show:false}" class="flex items-center justify-between flex-wrap bg-orange-600 p-6">
+    <nav
+      x-data="{show:false}"
+      class="flex items-center justify-between flex-wrap bg-orange-600 p-6"
+    >
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <span class="font-semibold text-xl tracking-tight">FoodMeets</span>
       </div>
       <div class="block md:hidden">
-        <button @click="show=!show" class="flex items-center px-3 py-2 border rounded text-gray-100 border-gray-200 hover:text-white hover:border-white">
-          <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        <button
+          @click="show=!show"
+          class="flex items-center px-3 py-2 border rounded text-gray-100 border-gray-200 hover:text-white hover:border-white"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
         </button>
       </div>
-      <div @click.away="show = false" :class="{ 'block': show, 'hidden': !show }" class="w-full block flex-grow md:flex md:justify-end md:w-auto">
+      <div
+        @click.away="show = false"
+        :class="{ 'block': show, 'hidden': !show }"
+        class="w-full block flex-grow md:flex md:justify-end md:w-auto"
+      >
         <div>
-           <a href="/trendingRecipes" class="block md:inline-block text-lg px-4 py-2 leading-none rounded text-white border-white hover:border-transparent hover:text-orange-500 hover:bg-white mt-4 md:mt-0">Popular</a>
-           <a href="/" class="block md:inline-block text-lg px-4 py-2 leading-none rounded text-orange border-white hover:border-transparent bg-white mt-4 md:mt-0">Home</a>
+          <a
+            href="/trendingRecipes"
+            class="block md:inline-block text-lg px-4 py-2 leading-none rounded text-white border-white hover:border-transparent hover:text-orange-500 hover:bg-white mt-4 md:mt-0"
+            >Popular</a
+          >
+          <a
+            href="/"
+            class="block md:inline-block text-lg px-4 py-2 leading-none rounded text-orange border-white hover:border-transparent bg-white mt-4 md:mt-0"
+            >Home</a
+          >
         </div>
       </div>
     </nav>
@@ -105,14 +130,35 @@
     <div class="flex flex-col items-center justify-start">
       <button
         id="downloadBtn"
-        class="bg-orange-400 hover:bg-orange-700 text-white font-semibold py-2 px-4 ml-500 p-3 mt-3 rounded focus:outline-none focus:shadow-outline"
+        class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 ml-500 p-3 mt-3 rounded focus:outline-none focus:shadow-outline inline-flex items-center"
       >
-        Download as PDF
+        <svg
+          class="fill-current w-4 h-4 mr-2"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+        </svg>
+        <span>Download</span>
       </button>
 
       <div class="container" id="meals">
         <div class="left-side">
           <img src="<%= image %>" alt="Recipe Image" class="profile-image" />
+          <form action="/savedRecipe" , method="post">
+            <input type="hidden" name="name" value="<%= title %>" />
+            <input type="hidden" name="image" value="<%= image %>" />
+            <input type="hidden" name="id" value="<%= id %>" />
+            <input type="hidden" name="time" value="<%= readyInMinutes %>" />
+            <div class="flex flex-col items-center justify-start">
+            <button
+              type="submit"
+              class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline inline-flex items-center"
+            >
+              <span>Save</span>
+            </button>
+          </div>
+          </form>
           <h1><strong><%= title %></strong></h1>
           <h2><strong>Ready In Minutes: <%= readyInMinutes %></strong></h2>
           <h2><strong>Nutritional information</strong></h2>
@@ -163,14 +209,6 @@
         </div>
       </div>
     </div>
-
-    <form action="/savedRecipe", method="post">
-      <input type="hidden" name="name" value="<%= title %>">
-      <input type="hidden" name="image" value="<%= image %>">
-      <input type="hidden" name="id" value="<%= id %>">
-      <input type="hidden" name="time" value="<%= readyInMinutes %>">
-      <button type="submit">Saved</button>
-    </form>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"

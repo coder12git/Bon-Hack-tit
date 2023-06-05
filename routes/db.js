@@ -10,9 +10,9 @@ router.post("/savedRecipe", (req, res) => {
       id: req.body.id,
       time: req.body.time,
     });
-
     recipe.save();
     res.send("Recipe saved successfully!");
+    
   } catch (error) {
     res.send(error);
   }
