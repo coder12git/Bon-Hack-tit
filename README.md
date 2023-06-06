@@ -2,7 +2,7 @@
    
 ![p1](https://github.com/coder12git/Bon-Hack-tit/assets/108334168/a34fdfcf-e315-40f3-9e8d-6019ec10001f)
 
-<div align='center'>
+<div>
    <img src="https://img.shields.io/github/repo-size/coder12git/Bon-Hack-tit?style=for-the-badge" />
    <img src="https://img.shields.io/github/issues-raw/coder12git/Bon-Hack-tit?style=for-the-badge" />
    <img src="https://img.shields.io/github/issues-closed-raw/coder12git/Bon-Hack-tit?style=for-the-badge" />
