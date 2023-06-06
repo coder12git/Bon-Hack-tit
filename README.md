@@ -1,6 +1,8 @@
+<div align='center'>
+   
 ![p1](https://github.com/coder12git/Bon-Hack-tit/assets/108334168/a34fdfcf-e315-40f3-9e8d-6019ec10001f)
 
-<div >
+<div align='center'>
    <img src="https://img.shields.io/github/repo-size/coder12git/Bon-Hack-tit?style=for-the-badge" />
    <img src="https://img.shields.io/github/issues-raw/coder12git/Bon-Hack-tit?style=for-the-badge" />
    <img src="https://img.shields.io/github/issues-closed-raw/coder12git/Bon-Hack-tit?style=for-the-badge" />
@@ -18,6 +20,8 @@
 # FoodMeets
 
 Plan your meals with ease, from weekly menus to random recipes and ingredient-based suggestions.
+   
+</div>
 
 ## Project Overview
 > The goal of this web application is to provide a convenient and efficient solution for meal planning, recipe generation, and nutrient tracking for busy individuals. The application aims to make meal planning more accessible and enjoyable by offering the following key features:
