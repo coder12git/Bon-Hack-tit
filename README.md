@@ -71,6 +71,7 @@ We aim to provide users with a user-friendly, efficient, and personalized soluti
 <img src="https://skillicons.dev/icons?i=html,css,js,tailwindcss,nodejs,express,mongodb"/>
 </a>
 <h3>Website: <a href = "https://bon-hack-tit.suruchikumari1.repl.co/">https://bon-hack-tit.suruchikumari1.repl.co/</a></h3>
+<h3>Devpost: <a href = "https://devpost.com/software/x-fh79c2">https://devpost.com/software/x-fh79c2</a></h3>
 </p>
 
 <h2>Screenshots</h2>
